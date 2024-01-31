@@ -22,16 +22,14 @@ def xml2dict(xml_file):
                             end_depth = float(in_layer.find('终止深度').text)  # 获取终止深度  
                             result_row[i]["终止深度"] = end_depth  # 添加到字典中
                             layer_name = in_layer.find('吕荣值').text  # 获取地层名称    
-                            result_row[i]["吕荣值"] = layer_name
-                            layer_depth = float(in_layer.find('层底深度').text)  # 获取底层深度  
-                            result_row[i]["终止深度"] = layer_depth  # 添加到字典中     
+                            result_row[i]["吕荣值"] = layer_name 
     return result_row
        
 def save_to_csv(result_dict, filename):  
     with open(filename, 'w', newline='') as csvfile:  
         writer = csv.writer(csvfile) 
     # 写入表头  
-        writer.writerow(['Hole ID', 'From', 'To', 'Lithology'])  
+        writer.writerow(['Hole ID', 'From', 'To', 'Lu'])  
     # 写入数据行  
         for key, value in result_dict.items():
             try:
